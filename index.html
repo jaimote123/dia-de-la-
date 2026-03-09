@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Feliz Día de la Mujer Dianita</title>
+
+<style>
+
+/* =============================== */
+/* ESTILOS GENERALES */
+/* =============================== */
+
+body{
+    margin:0;
+    padding:0;
+    height:100vh;
+    overflow:hidden;
+    font-family: 'Segoe UI', sans-serif;
+    
+    background: linear-gradient(270deg,
+    #2a003f,
+    #4b0082,
+    #6a0dad,
+    #7b2cbf,
+    #9d4edd);
+    
+    background-size:1000% 1000%;
+    animation:fondoAnimado 25s infinite;
+}
+
+/* Animación del fondo */
+
+@keyframes fondoAnimado{
+
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+
+}
+
+
+/* =============================== */
+/* CONTENEDOR PRINCIPAL */
+/* =============================== */
+
+.contenedor{
+
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+text-align:center;
+
+}
+
+
+/* =============================== */
+/* TITULO */
+/* =============================== */
+
+.titulo{
+
+font-size:70px;
+color:white;
+text-shadow:
+0 0 10px #fff,
+0 0 20px #d0a3ff,
+0 0 40px #b14fff,
+0 0 60px #7b2cbf;
+
+animation:latido 3s infinite;
+
+}
+
+
+@keyframes latido{
+
+0%{transform:scale(1)}
+50%{transform:scale(1.05)}
+100%{transform:scale(1)}
+
+}
+
+
+/* =============================== */
+/* SUBTEXTO */
+/* =============================== */
+
+.subtexto{
+
+font-size:25px;
+color:#f1d3ff;
+margin-top:20px;
+
+animation:flotar 6s infinite ease-in-out;
+
+}
+
+@keyframes flotar{
+
+0%{transform:translateY(0)}
+50%{transform:translateY(-10px)}
+100%{transform:translateY(0)}
+
+}
+
+
+/* =============================== */
+/* TULIPANES */
+/* =============================== */
+
+.jardin{
+
+position:absolute;
+bottom:0;
+width:100%;
+display:flex;
+justify-content:space-around;
+
+}
+
+
+/* TALLOS */
+
+.tallo{
+
+width:6px;
+height:160px;
+background:linear-gradient(#1b5e20,#4caf50);
+margin:auto;
+animation:balanceo 4s infinite ease-in-out;
+
+}
+
+
+@keyframes balanceo{
+
+0%{transform:rotate(-2deg)}
+50%{transform:rotate(2deg)}
+100%{transform:rotate(-2deg)}
+
+}
+
+
+/* FLOR */
+
+.flor{
+
+width:40px;
+height:40px;
+background:radial-gradient(circle,#e0aaff,#7b2cbf);
+
+border-radius:50% 50% 0 0;
+
+margin:auto;
+position:relative;
+top:-30px;
+
+animation:abrirFlor 5s infinite;
+
+}
+
+
+@keyframes abrirFlor{
+
+0%{transform:scale(0.9)}
+50%{transform:scale(1.1)}
+100%{transform:scale(0.9)}
+
+}
+
+
+/* =============================== */
+/* PARTICULAS */
+/* =============================== */
+
+.particula{
+
+position:absolute;
+width:6px;
+height:6px;
+background:white;
+border-radius:50%;
+
+opacity:0.8;
+
+animation:subir 10s linear infinite;
+
+}
+
+
+@keyframes subir{
+
+0%{
+transform:translateY(0);
+opacity:0;
+}
+
+50%{
+opacity:1;
+}
+
+100%{
+transform:translateY(-100vh);
+opacity:0;
+}
+
+}
+
+
+/* =============================== */
+/* ESTRELLAS */
+/* =============================== */
+
+.estrella{
+
+position:absolute;
+color:white;
+font-size:18px;
+
+animation:brillar 2s infinite alternate;
+
+}
+
+@keyframes brillar{
+
+from{opacity:0.3}
+to{opacity:1}
+
+}
+
+
+/* =============================== */
+/* BOTON */
+/* =============================== */
+
+button{
+
+margin-top:40px;
+padding:15px 35px;
+font-size:18px;
+
+background:#9d4edd;
+color:white;
+
+border:none;
+border-radius:30px;
+
+cursor:pointer;
+
+box-shadow:0 0 15px #c77dff;
+
+transition:0.4s;
+
+}
+
+button:hover{
+
+transform:scale(1.1);
+box-shadow:0 0 30px #e0aaff;
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<div class="contenedor">
+
+<h1 class="titulo">
+💜 Feliz Día de la Mujer Dianita 💜
+</h1>
+
+<div class="subtexto">
+Eres una persona maravillosa 🌷
+</div>
+
+<button onclick="crearTulipanes()">
+Más flores para ti 🌷
+</button>
+
+</div>
+
+
+<!-- Jardin -->
+
+<div class="jardin" id="jardin"></div>
+
+
+<script>
+
+/* =============================== */
+/* CREAR TULIPANES */
+/* =============================== */
+
+function crearTulipanes(){
+
+let jardin=document.getElementById("jardin");
+
+for(let i=0;i<8;i++){
+
+let tulipan=document.createElement("div");
+
+let tallo=document.createElement("div");
+tallo.className="tallo";
+
+let flor=document.createElement("div");
+flor.className="flor";
+
+tallo.appendChild(flor);
+
+tulipan.appendChild(tallo);
+
+jardin.appendChild(tulipan);
+
+}
+
+}
+
+
+/* =============================== */
+/* PARTICULAS */
+/* =============================== */
+
+function crearParticulas(){
+
+for(let i=0;i<40;i++){
+
+let p=document.createElement("div");
+
+p.className="particula";
+
+p.style.left=Math.random()*100+"%";
+p.style.top=Math.random()*100+"%";
+
+p.style.animationDuration=(5+Math.random()*10)+"s";
+
+document.body.appendChild(p);
+
+}
+
+}
+
+crearParticulas();
+
+
+/* =============================== */
+/* ESTRELLAS */
+/* =============================== */
+
+function crearEstrellas(){
+
+for(let i=0;i<30;i++){
+
+let estrella=document.createElement("div");
+
+estrella.className="estrella";
+
+estrella.innerHTML="✦";
+
+estrella.style.left=Math.random()*100+"%";
+estrella.style.top=Math.random()*100+"%";
+
+document.body.appendChild(estrella);
+
+}
+
+}
+
+crearEstrellas();
+
+
+/* =============================== */
+/* LLUVIA DE FLORES */
+/* =============================== */
+
+function lluviaFlores(){
+
+setInterval(()=>{
+
+let flor=document.createElement("div");
+
+flor.innerHTML="🌷";
+
+flor.style.position="absolute";
+
+flor.style.left=Math.random()*100+"%";
+
+flor.style.top="-20px";
+
+flor.style.fontSize="30px";
+
+flor.style.animation="caer 8s linear";
+
+document.body.appendChild(flor);
+
+setTimeout(()=>{
+
+flor.remove();
+
+},8000);
+
+},800);
+
+}
+
+
+let estilo=document.createElement("style");
+
+estilo.innerHTML=`
+
+@keyframes caer{
+
+0%{transform:translateY(-20px) rotate(0deg);}
+
+100%{transform:translateY(110vh) rotate(360deg);}
+
+}
+
+`;
+
+document.head.appendChild(estilo);
+
+lluviaFlores();
+
+
+</script>
+
+</body>
+</html>
